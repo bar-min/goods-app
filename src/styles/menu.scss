@@ -7,7 +7,7 @@
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
   position: relative;
-
+  
   @media(max-width: 680px){
     align-self: center;
     min-width: 200px;
@@ -53,7 +53,7 @@
       background-color: #FF8484;
       border-radius: 4px;
     }
-  }
+  } 
   
   .input-menu{
     width: 100%;
@@ -68,6 +68,26 @@
     }
   }
 
+  .menu-required{
+    position: relative;
+    & > input {
+      border: 1px solid #FF8484;
+    }
+    &:after{
+      content: 'Поле является обязательным';
+      position: absolute;
+      bottom: -4px;
+      transform: translateY(10px);
+      color: #FF8484;
+      left: 0;
+      font-size: 8px;
+      font-weight: 400;
+      line-height: 125%;
+      letter-spacing: -0.02em;
+    }
+    
+  }
+
   &__description{
     & > textarea {
       min-height: 108px;
@@ -76,7 +96,8 @@
 
   &__btn{
     width: 100%;
-    background-color: #EEEEEE;
+    background-color:#EEEEEE;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 10px 0;
     color: #B4B4B4;
@@ -86,9 +107,14 @@
     line-height: 125%;
     letter-spacing: -0.02em;
     transition: all 0.3s;
-    &:hover, &:focus{
-      background-color: #dedede;
-      color: #49485E;
+
+    &_active{
+      background-color:#7BAE73;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      color: white;
+      &:hover, &:focus{
+        background-color:#7bae73dc;
+      }
     }
   }
 }
