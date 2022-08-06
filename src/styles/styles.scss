@@ -9,6 +9,16 @@ $fontFamily: 'Source Sans Pro', sans-serif;
 
 $fontFamilySecond: 'Inter', sans-serif;
 
+@mixin adaptiveValue($property, $startSize, $minSize, $maxWidth, $minWidth: 320, $mode: 0){ 
+  $addSize: $startSize - $minSize;
+  @if ($mode == 1) {
+    @media (min-width: #{$minWidth + px}) and (max-width: #{$maxWidth + px}) {
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / (#{$maxWidth - $minWidth})));
+    }
+  } @else {
+	  #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+  }
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Source+Sans+Pro:wght@400;600&display=swap');
 

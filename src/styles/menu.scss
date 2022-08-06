@@ -8,6 +8,11 @@
   border-radius: 4px;
   position: relative;
 
+  @media(max-width: 680px){
+    align-self: center;
+    min-width: 200px;
+  }
+
   &__heading{
     position: absolute;
     top: -51px;
@@ -16,6 +21,7 @@
     font-weight: 600;
     line-height: 125%;
     letter-spacing: 0em;
+    @include adaptiveValue('left', 0, 20, 680, 320, 1);
   }
 
   &__body{

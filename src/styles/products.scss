@@ -2,7 +2,9 @@
   &__container{
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     gap: 16px;
+    @include adaptiveValue('gap', 16, 32, 680, 320, 1);
   }
 
   .card{
@@ -30,15 +32,18 @@
       flex-direction: column;
       gap: 16px;
       padding: 16px 16px 24px 16px;
+      @include adaptiveValue('gap', 16, 8, 680, 320, 1);
     }
     &__title{
       font-size: 20px;
       font-weight: 600;
       line-height: 125%;
       letter-spacing: 0em;
+      @include adaptiveValue('font-size', 20, 18, 680, 320, 1);
     }
     &__text{
       line-height: 125%;
+      @include adaptiveValue('font-size', 16, 14, 680, 320, 1);
     }
     &__price{
       padding-top: 16px;
@@ -47,6 +52,7 @@
       line-height: 125%;
       letter-spacing: 0em;
       display: inline-block;
+      @include adaptiveValue('font-size', 24, 22, 680, 320, 1);
     }
     &__remove{
       cursor: pointer;
