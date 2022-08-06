@@ -1,0 +1,13 @@
+.blocks{
+
+  .blocks-wrapper{
+    max-width: 1028px;
+    margin: 0 auto;
+    padding: 75px 0;
+  }
+
+  &__container{
+    display: flex;
+    gap: 16px
+  }
+}
