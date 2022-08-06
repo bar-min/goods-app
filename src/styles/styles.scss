@@ -1,0 +1,21 @@
+#app {
+  background-color: #F5F5F5;
+  min-height: 100vh;
+}
+
+$fontSize: 16px;
+
+$fontFamily: 'Source Sans Pro', sans-serif;
+
+$fontFamilySecond: 'Inter', sans-serif;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Source+Sans+Pro:wght@400;600&display=swap');
+
+@import 'null.scss';
+
+@import 'blocks.scss';
+
+@import 'menu.scss';
+
+@import 'products.scss';
