@@ -1,9 +1,13 @@
 .products{
+  flex: 1 1 auto;
+
   &__container{
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
     gap: 16px;
+    @media(max-width: 1200px){
+      justify-content: space-evenly;
+    }
     @include adaptiveValue('gap', 16, 32, 680, 320, 1);
   }
 
@@ -13,6 +17,7 @@
     background-color: #FFFEFB;
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
     border-radius: 4px;
+    @include adaptiveValue('flex-basis', 332, 256, 1440, 1200, 1);
 
     &__picture{
       position: relative;
@@ -32,6 +37,8 @@
       flex-direction: column;
       gap: 16px;
       padding: 16px 16px 24px 16px;
+      @include adaptiveValue('gap', 16, 8, 1400, 1200, 1);
+      @include adaptiveValue('padding-bottom', 24, 16, 1400, 1200, 1);
       @include adaptiveValue('gap', 16, 8, 680, 320, 1);
     }
     &__title{
@@ -43,6 +50,7 @@
     }
     &__text{
       line-height: 125%;
+      @include adaptiveValue('font-size', 16, 14, 1400, 1200, 1);
       @include adaptiveValue('font-size', 16, 14, 680, 320, 1);
     }
     &__price{

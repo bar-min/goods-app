@@ -1,22 +1,24 @@
 <template>
   <div class="products">
     <div class="products__container">
-      <div class="products__card card" v-for="product in products" :key="product.title">
+        <transition-group name="list">
+        <div class="products__card card" v-for="product in products" :key="product.id">
+  
+          <div class="card__picture">
+            <img :src="product.url" alt="product">
+          </div>
 
-        <div class="card__picture">
-          <img :src="product.url" alt="product">
+          <div class="card__body">
+            <h3 class="card__title"></h3>
+
+            <p class="card__text">{{ product.description }}</p>
+
+            <span class="card__price">{{ validPrice(product.price) }}</span>
+          </div>
+          
+          <div @click="deleteProduct(product.id)" class="card__remove"></div>
         </div>
-
-        <div class="card__body">
-          <h3 class="card__title"></h3>
-
-          <p class="card__text">{{ product.description }}</p>
-
-          <span class="card__price">{{ validPrice(product.price) }}</span>
-        </div>
-
-        <div @click="deleteProduct(product.id)" class="card__remove"></div>
-      </div>
+        </transition-group>
     </div>
   </div>
 </template>
