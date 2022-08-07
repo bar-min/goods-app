@@ -3,7 +3,7 @@
   .blocks-wrapper{
     max-width: 1406px;
     margin: 0 auto;
-    padding: 75px 15px;
+    padding: 83px 15px;
   }
 
   &__container{
@@ -11,7 +11,7 @@
     flex-direction: row;
     gap: 16px;
 
-    @include adaptiveValue('gap', 16, 32, 680, 320, 1);
+    @include adaptiveValue('gap', 16, 80, 680, 320, 1);
 
     @media(max-width: 680px){
       flex-direction: column;
