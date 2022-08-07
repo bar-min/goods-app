@@ -1,7 +1,7 @@
 <template>
   <main class="blocks">
     <div class="blocks__container blocks-wrapper">
-      <item-menu @add="addProduct"></item-menu>
+      <add-menu @add="addProduct"></add-menu>
 
       <product-list @delete="deleteProduct" @sort="sortProducts" :products="products"></product-list>
     </div>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import ItemMenu from './components/ItemMenu.vue';
+import AddMenu from './components/AddMenu.vue';
 import ProductList from './components/ProductList.vue';
 import defaultPicture from './assets/images/item-default.png';
 
@@ -88,7 +88,7 @@ export default {
     }
   },
 
-  components: { ItemMenu, ProductList },
+  components: { AddMenu, ProductList },
 }
 </script>
 
