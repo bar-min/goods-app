@@ -1,6 +1,6 @@
 #app {
   background-color:rgba(255, 254, 251, 0.8);
-  min-height: 100vh;
+  height: 100vh;
 }
 
 $fontSize: 16px;
@@ -31,3 +31,5 @@ $fontFamilySecond: 'Inter', sans-serif;
 @import 'products.scss';
 
 @import 'transition.scss';
+
+@import 'modal.scss';

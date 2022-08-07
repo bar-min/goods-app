@@ -4,6 +4,8 @@
       <add-menu @add="addProduct"></add-menu>
 
       <product-list @delete="deleteProduct" @sort="sortProducts" :products="products"></product-list>
+
+      <add-modal :show="added"></add-modal>
     </div>
   </main>
 </template>
@@ -11,6 +13,7 @@
 <script>
 import AddMenu from './components/AddMenu.vue';
 import ProductList from './components/ProductList.vue';
+import AddModal from './components/AddModal.vue';
 import defaultPicture from './assets/images/item-default.png';
 
 export default {
@@ -19,6 +22,7 @@ export default {
     return {
       products: [],
       selected: '',
+      added: false
     }
   },
 
@@ -42,6 +46,8 @@ export default {
   methods: {
     addProduct(value){
       this.products.push(value);
+
+      this.showModal();
 
       if(this.selected) this.sortProducts(this.selected);
 
@@ -79,16 +85,20 @@ export default {
 
       if(!allProducts){
         return;
-      } 
-      else if(!JSON.parse(allProducts).length){
-        return;
       }
       
       this.products = JSON.parse(allProducts);
+    },
+
+    showModal(){
+      this.added = true;
+      setTimeout(() => {
+        this.added = false;
+      }, 3000)
     }
   },
 
-  components: { AddMenu, ProductList },
+  components: { AddMenu, ProductList, AddModal },
 }
 </script>
 
