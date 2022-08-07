@@ -43,7 +43,6 @@ export default {
       description: '',
       url: '',
       price: '',
-      id: Date.now()
     }
   },
   
@@ -53,8 +52,11 @@ export default {
     isValid(){
       return (this.title && this.url && this.price) ? true : false;
     },
+    validPrice(){
+      return +this.price.replace(/\s/g, "")
+    },
     newProduct(){
-      return { title: this.title, description: this.description, url: this.url, price: this.price, id: this.id }
+      return { title: this.title, description: this.description, url: this.url, price: this.validPrice, id: Date.now() }
     },
   },
   methods: {
@@ -77,7 +79,6 @@ export default {
       this.description = '';
       this.url = '';
       this.price = '';
-      this.id = '';
     },
 
     checkInput(){
