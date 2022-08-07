@@ -35,16 +35,24 @@ export default {
     })
   },
 
+  mounted(){
+    this.getProducts();
+  },
+
   methods: {
     addProduct(value){
       this.products.push(value);
 
       if(this.selected) this.sortProducts(this.selected);
+
+      this.saveProducts();
     },
 
     deleteProduct(idx){
       let current = this.products.findIndex(item => item.id === idx);
       this.products.splice(current, 1);
+
+      this.saveProducts();
     },
 
     sortProducts(option){
@@ -60,6 +68,23 @@ export default {
           this.products.sort((a, b) => a.title.localeCompare(b.title));
           break;
       }
+    },
+
+    saveProducts(){
+      localStorage.setItem('products', JSON.stringify(this.products));
+    },
+
+    getProducts(){
+      let allProducts = localStorage.getItem('products');
+
+      if(!allProducts){
+        return;
+      } 
+      else if(!JSON.parse(allProducts).length){
+        return;
+      }
+      
+      this.products = JSON.parse(allProducts);
     }
   },
 
