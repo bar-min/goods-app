@@ -1,5 +1,6 @@
-# goods-layout
+# goods-app
 
+Node.js version -- v16.13.0
 ## Project setup
 ```
 npm install
