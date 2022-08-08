@@ -12,3 +12,13 @@
 .list-move{
   transition: all 0.6s;
 }
+
+.loader-enter-active, 
+.loader-leave-active {
+  transition: all 0.8s ease;
+}
+
+.loader-enter-from,
+.loader-leave-to{
+  opacity: 0;
+}

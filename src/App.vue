@@ -1,6 +1,8 @@
 <template>
   <main class="blocks">
     <div class="blocks__container blocks-wrapper">
+      <pro-loader :loading="loading"></pro-loader>
+      
       <add-menu @add="addProduct"></add-menu>
 
       <product-list @delete="deleteProduct" @sort="sortProducts" :products="products"></product-list>
@@ -12,17 +14,21 @@
 
 <script>
 import AddMenu from './components/AddMenu.vue';
-import ProductList from './components/ProductList.vue';
 import AddModal from './components/AddModal.vue';
+import ProductList from './components/ProductList.vue';
+import ProLoader from './components/ProLoader.vue';
+
 import defaultPicture from './assets/images/item-default.png';
 
 export default {
   name: 'App',
+
   data(){
     return {
       products: [],
       selected: '',
-      added: false
+      added: false,
+      loading: false
     }
   },
 
@@ -31,13 +37,6 @@ export default {
             Довольно-таки интересное описание товара в несколько строк`, 
             url: defaultPicture, 
             price: 10000},
-
-  beforeMount(){
-    let product = this.$options.product;
-    this.products = Array.from(Array(9).keys()).map(idx => {
-      return { ...product, id: idx}
-    })
-  },
 
   mounted(){
     this.getProducts();
@@ -53,14 +52,12 @@ export default {
 
       this.saveProducts();
     },
-
     deleteProduct(idx){
       let current = this.products.findIndex(item => item.id === idx);
       this.products.splice(current, 1);
 
       this.saveProducts();
     },
-
     sortProducts(option){
       this.selected = option;
       switch(this.selected){
@@ -75,21 +72,40 @@ export default {
           break;
       }
     },
-
     saveProducts(){
       localStorage.setItem('products', JSON.stringify(this.products));
     },
-
-    getProducts(){
-      let allProducts = localStorage.getItem('products');
-
-      if(!allProducts){
-        return;
-      }
-      
-      this.products = JSON.parse(allProducts);
+    setDefaultProducts(){
+      let product = this.$options.product;
+      this.products = Array.from(Array(9).keys()).map(idx => {
+        return { ...product, id: idx}
+      })
     },
+    getProducts(){
+      // Simulate a request to the server (for loading)
+      let response = new Promise(((resolve, reject) => {
+        this.loading = true;
 
+        let allProducts = localStorage.getItem('products');
+
+        if(!allProducts){
+          setTimeout(() => reject(), 500)
+        }
+
+        setTimeout(() => resolve(allProducts), 500)
+      }))
+
+      response
+      .then(data => {
+        this.products = JSON.parse(data);
+      })
+      .catch(() => {
+        this.setDefaultProducts();
+      })
+      .finally(() => {
+        setTimeout(() => { this.loading = false }, 1000)
+      })
+    },
     showModal(){
       this.added = true;
       setTimeout(() => {
@@ -98,7 +114,7 @@ export default {
     }
   },
 
-  components: { AddMenu, ProductList, AddModal },
+  components: { AddMenu, AddModal, ProductList, ProLoader },
 }
 </script>
 
