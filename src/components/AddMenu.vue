@@ -5,12 +5,12 @@
         <div class="menu__body">
           <div class="menu__title" :class="{'menu-required': !isValidTitle }">
             <label for="title" class="label-menu label-menu-required">Наименование товара</label>
-            <input v-model="title" @blur="checkInput" class='input-menu' id="title" placeholder="Введите наименование товара">
+            <input v-model="title" @blur="checkInput" class='input-menu' id="title" maxlength="26" placeholder="Введите наименование товара">
           </div>
 
           <div class="menu__description">
             <label for="area" class="label-menu">Описание товара</label>
-            <textarea v-model="description" class='input-menu' id="area" placeholder="Введите описание товара"></textarea>
+            <textarea v-model="description" class='input-menu' id="area" maxlength="120" placeholder="Введите описание товара"></textarea>
           </div>
 
           <div class="menu__link" :class="{'menu-required': !isValidLink }">
@@ -20,7 +20,7 @@
 
           <div class="menu__price" :class="{'menu-required': !isValidPrice }">
             <label for="price" class="label-menu label-menu-required">Цена товара</label>
-            <input :value="price" @input="checkPrice" @blur="checkInput" class='input-menu' id="price" placeholder="Введите цену">
+            <input :value="price" @input="checkPrice" @blur="checkInput" class='input-menu' id="price" maxlength="8" placeholder="Введите цену">
           </div>
         </div>
 

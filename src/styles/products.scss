@@ -5,13 +5,23 @@
     display: flex;
     flex-flow: row wrap;
     gap: 16px;
-    align-items: flex-start;
     @media(max-width: 1200px){
       justify-content: space-evenly;
     }
     @include adaptiveValue('gap', 16, 32, 680, 320, 1);
   }
 
+  &__card{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    word-break: break-all;
+    & > :not(:first-child){
+      padding: 0 16px;
+    }
+    @include adaptiveValue('gap', 16, 8, 1400, 1200, 1);  
+    @include adaptiveValue('gap', 16, 8, 680, 320, 1);
+  }
   .card{
     position: relative;
     flex-basis: 332px;
@@ -33,15 +43,6 @@
         border-radius: 4px 0;
       }
     }
-    &__body{
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 16px 16px 24px 16px;
-      @include adaptiveValue('gap', 16, 8, 1400, 1200, 1);
-      @include adaptiveValue('padding-bottom', 24, 16, 1400, 1200, 1);
-      @include adaptiveValue('gap', 16, 8, 680, 320, 1);
-    }
     &__title{
       font-size: 20px;
       font-weight: 600;
@@ -55,13 +56,16 @@
       @include adaptiveValue('font-size', 16, 14, 680, 320, 1);
     }
     &__price{
-      padding-top: 16px;
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-end;
       font-size: 24px;
       font-weight: 600;
       line-height: 125%;
-      letter-spacing: 0em;
-      display: inline-block;
+      padding-top: 16px;
+      padding-bottom: 24px;
       @include adaptiveValue('font-size', 24, 22, 680, 320, 1);
+      @include adaptiveValue('padding-bottom', 24, 16, 1400, 1200, 1);
     }
     &__remove{
       cursor: pointer;
